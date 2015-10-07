@@ -1,0 +1,95 @@
+/* Variables */
+/* Sans Serif font is Proxima Nova */
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px; }
+
+.grid-item {
+  width: 170px;
+  height: 160px;
+  margin: 10px;
+  border-radius: 20px; }
+
+h1 {
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  font-family: sans-serif;
+  line-height: 110px; }
+
+.grid-item--width2 {
+  width: 380px; }
+
+.grid-item--height2 {
+  height: 350px; }
+  .grid-item--height2 h1 {
+    line-height: 280px; }
+  .grid-item--height2 p {
+    color: white;
+    padding: 20px;
+    font-size: 2em;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bold; }
+  .grid-item--height2 h6 {
+    color: white;
+    font-weight: 100;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 1.5em; }
+  .grid-item--height2 img {
+    width: 100%;
+    height: auto;
+    margin-top: 70px; }
+
+.primary {
+  background-color: #00a887; }
+
+.secondary {
+  background-color: #00f3c3; }
+
+.third {
+  background-color: #00755e; }
+
+.img1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/chatt.jpg"); }
+
+.img2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../img/lpg.jpg"); }
+
+.img3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/love.jpg"); }
+
+.img4 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/mac.jpg"); }
+
+.img5 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/space.jpg"); }
+
+@media screen and (max-width: 767px) {
+  .grid-item--width2 {
+    width: 300px; }
+
+  .grid-item--height2 {
+    height: 350px; }
+    .grid-item--height2 h1 {
+      line-height: 280px; }
+    .grid-item--height2 p {
+      color: white;
+      padding: 20px;
+      font-size: 2em;
+      font-family: sans-serif;
+      text-align: center;
+      font-weight: bold; }
+    .grid-item--height2 h6 {
+      color: white;
+      font-weight: 100;
+      font-family: sans-serif;
+      text-align: center;
+      font-size: 1.5em; }
+    .grid-item--height2 img {
+      width: 100%;
+      height: auto;
+      margin-top: 70px; } }
+
+/*# sourceMappingURL=style.css.map */
