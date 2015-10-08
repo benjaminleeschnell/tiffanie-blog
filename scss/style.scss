@@ -19,11 +19,11 @@ $third-color: #00755e;
   border-radius: 20px;
 }
 
-h1 {
+.wrapper h1 {
   text-align: center;
   vertical-align: middle;
   color: white;
-  font-family: sans-serif;
+  font-family: "proxima-nova";
   line-height: 110px;
 }
 
@@ -40,14 +40,14 @@ h1 {
     color: white;
     padding: 20px;
     font-size: 2em;
-    font-family: sans-serif;
+    font-family: "proxima-nova";
     text-align: center;
     font-weight: bold;
   }
   h6 {
     color: white;
     font-weight: 100;
-    font-family: sans-serif;
+    font-family: "proxima-nova";
     text-align: center;
     font-size: 1.5em;
   }
@@ -132,14 +132,14 @@ h1 {
     color: white;
     padding: 20px;
     font-size: 2em;
-    font-family: sans-serif;
+    font-family: "proxima-nova";
     text-align: center;
     font-weight: bold;
   }
   h6 {
     color: white;
     font-weight: 100;
-    font-family: sans-serif;
+    font-family: "proxima-nova";
     text-align: center;
     font-size: 1.5em;
   }
@@ -151,6 +151,96 @@ h1 {
 }
 
 }
+
+
+/* ==============================================
+
+about.html
+
+=============================================== */
+
+.about {
+  margin: 75px 150px 50px 150px !important;
+  img {
+    margin-top: 38px;
+  }
+  h1 {
+    font-family: "proxima-nova" sans-serif;
+    color: $primary-color;
+  }
+  p {
+    font-family: "proxima-nova" sans-serif;
+    font-size: 1.2em;
+    max-width: 100%;
+  }
+  .padded-column {
+    padding: 40px;
+  }
+}
+
+.topper {
+  width: 100%;
+  height: 75px;
+  background-color: $primary-color;
+}
+
+.bottom {
+  width: 100% !important;
+  height: 220px;
+  background-color: $primary-color;
+  
+  .logo {
+    img {
+    max-height: 120px;
+    margin: 50px 150px;
+  }
+}
+  
+.fb {
+    display: inline;
+    text-align: right;
+    img {
+      max-height: 100px;
+      margin: 60px 0;
+    }
+  }
+  
+.tw {
+    display: inline;
+    text-align: left;
+    img {
+      height: 100px;
+      margin: 60px 0;
+    }
+  }
+}
+
+
+
+.navigation {
+  text-align: center;
+  margin: 50px auto !important;
+  a {
+    font-family: "proxima-nova" sans-serif;
+    font-size: 1.8em;
+    text-align: center;
+    color: $primary-color;
+      &:hover {
+        color: $third-color;
+      }
+  }
+}
+
+@media screen and (max-width: 767px) {
+    .columns:last-child {
+      float: none;
+  }
+}
+
+
+
+
+
 
 
 
