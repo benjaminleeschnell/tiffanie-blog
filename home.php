@@ -6,46 +6,117 @@
       <title>Gumption</title>
     <script src="https://use.typekit.net/rff6fnz.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    <link rel="stylesheet" href="/wp-content/themes/tiffanie-blog/css/normalize.css" />
-    <link rel="stylesheet" href="/wp-content/themes/tiffanie-blog/css/style.css" />
+    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?> /css/normalize.css" />
+    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/wp-content/themes/tiffanie-blog/js/masonry.pkgd.min.js"></script>
+    <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/masonry.pkgd.min.js"></script>
+	 <?php wp_head(); ?> 
   </head>
   <body>
 
 <div class="wrapper">
   <div class="grid">
 
+    <a href="/"> 
     <div class="grid-item grid-item--width2 grid-item--height2">
-      <img src="/wp-content/themes/tiffanie-blog/img/logo.jpg">
-    </div>
+      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/logo.jpg">
+    </div></a>
+	
+	<?php //Gets list of most used tags
+	$tags = get_tags( 'number=50&orderby=count&order=DESC' ); 
+	$tag_link = array();
+	$tag_name = array();
+	
+	//Add links and names of tags to arrays
+	foreach ( $tags as $tag ) {
+	array_push($tag_link, get_tag_link( $tag->term_id ));
+	array_push($tag_name, $tag->name);
+	}
+	$tagNum = 0; // iterates through tag arrays	
+	$state = 0; //variable to help control switching between dynamic and static posts
+	
+	if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+		
+		$rand = (float)rand()/(float)getrandmax();
+	 
+		if($state == 1){ //After first post block do these static blocks
+			$state++; ?>
+			
+				<a href="/contact">  
+					<div class="grid-item grid-item--width2 grid-item--height2 primary">
+					<h1>Contact Me</h1>
+					</div>
+				</a>
+				<a href="#"> 
+					<div class="grid-item primary">
+					<h1>FB</h1>
+					</div>
+				</a>
 
-    <div class="grid-item grid-item--width2 grid-item--height2 img1">
-    <p>How to pursue your passion without sacrificing your paycheck.</p>
-    <h6>OCT. 1, 2015</h6>
-    </div> 
-
-    <div class="grid-item grid-item--width2 grid-item--height2 primary">
-        <h1>Contact Me</h1>
-    </div>
-
-    <div class="grid-item primary">
-      <h1>FB</h1>
-    </div> 
-
-    <div class="grid-item primary">
-      <h1>Twitter</h1>
-    </div>   
+				<a href="#"> 
+					<div class="grid-item primary">
+					<h1>Twitter</h1>
+					</div>
+				</a>   
    
-    <a href="/about">  
-    <div class="grid-item grid-item--width2 grid-item--height2 third">
-      <h1>About the Author</h1>
-    </div></a> 
-
-    <div class="grid-item grid-item--width2 grid-item--height2 secondary">    
-      <h1>#entrepreneurship</h1>
-    </div>
-
+				<a href="/about">  
+					<div class="grid-item grid-item--width2 grid-item--height2 third">
+					<h1>About the Author</h1>
+					</div>
+				</a> 
+  <?php 
+  //First tag/post blocks after static blocks
+  if ($rand < 0.3){ //get tag 1/3 of the time			
+			
+				if( $tagNum <= count($tag_name) && $tagNum > -1){ ?>
+			<a href="<?php echo $tag_link[$tagNum] ?>">
+			<div class="grid-item grid-item--width2 grid-item--height2 secondary">    
+				<h1><?php echo $tag_name[$tagNum];?></h1>
+				</div>
+			</a>
+	
+			<?php 
+			$tagNum ++; // move position to next tag
+			}
+			}
+  
+  
+  } if($state == 0 || $state >= 2  ){ //Initial post block before static blocks and all following posts blocks
+			if(state < 2){$state++; }
+		 
+		 	//Gets post's featured image url to use as background image of post	
+			if (has_post_thumbnail($post->ID)){ 
+				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); 
+				} ?>
+	 
+			
+			<a href="<?php the_permalink(); ?>" > 
+				<div class="grid-item grid-item--width2 grid-item--height2" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(<?php echo $image[0]; ?>); background-size: cover;">
+					<p><?php the_title(); ?></p>
+					<h6><?php the_time('F jS, Y'); ?></h6>
+				</div>
+			</a>
+			
+  <?php 	}		
+			if ($rand < 0.3 && $state >= 2){ //get tag block after a post block 1/3 of the time		
+			
+				if( $tagNum <= count($tag_name) && $tagNum > -1){ ?>
+			<a href="<?php echo $tag_link[$tagNum] ?>">
+			<div class="grid-item grid-item--width2 grid-item--height2 secondary">    
+				<h1><?php echo $tag_name[$tagNum];?></h1>
+				</div>
+			</a>
+	
+			<?php 
+			$tagNum ++;
+			}
+			}
+  
+	 
+	 endwhile;
+    endif;
+?>
+<!--
     <div class="grid-item grid-item--width2 grid-item--height2 secondary">    
       <h1>#business</h1>
       <h6>OCT. 1, 2015</h6>
@@ -82,6 +153,27 @@
      <div class="grid-item grid-item--width2 grid-item--height2 circle">
       <h1>See more</h1>
     </div>
+	
+	
+	<!--
+	<?php //Post template ?>
+	<div class="grid-item grid-item--width2 grid-item--height2 img1">
+    <p>How to pursue your passion without sacrificing your paycheck.</p>
+    <h6>OCT. 1, 2015</h6>
+    </div> 
+	
+	<div class="grid-item grid-item--width2 grid-item--height2 img2">
+    <p>blog title stuff</p>
+    <h6>OCT. 1, 2015</h6>
+    </div> 
+	
+	<?php //Tag template ?>
+	<div class="grid-item grid-item--width2 grid-item--height2 secondary">    
+      <h1>#entrepreneurship</h1>
+    </div>
+	-->
+	
+	
 
   </div>
 </div>
@@ -121,7 +213,7 @@ $('.grid').masonry({
 JS
 
 ******************************************************************* -->  
-
+<?php wp_footer(); ?>
   </body>
 </html>
 
