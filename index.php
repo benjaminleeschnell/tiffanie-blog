@@ -17,8 +17,10 @@
 	
 </div>
 
-<?php if (comments_open()) { comments_template(); } ?>
 <?php endwhile; ?>
+<div class="row about">
+<?php if (comments_open()) { comments_template(); } ?>
+</div>
 </div>
 
 <?php get_footer(); ?>
