@@ -82,7 +82,7 @@
   
   
   } if($state == 0 || $state >= 2  ){ //Initial post block before static blocks and all following posts blocks
-			if(state < 2){$state++; }
+			if($state < 2){$state++; }
 		 
 		 	//Gets post's featured image url to use as background image of post	
 			if (has_post_thumbnail($post->ID)){ 
