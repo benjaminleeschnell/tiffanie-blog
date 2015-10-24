@@ -98,8 +98,14 @@
 			</a>
 			
   <?php 	}		
-			if ($rand < 0.3 && $state >= 2){ //get tag block after a post block 1/3 of the time		
+			if ($rand < 0.3 && $state >= 2 && $tag_name[$tagNum] != ""){ //get tag block after a post block 1/3 of the time		
 			
+			//Loop through tags if two sections consist of nothing. 
+			//This should happen if there are more tags displayed then there are times the tag array prints out
+			if($tag_name[$tagNum] == "" && $tag_name[$tagNum + 1] == "")
+			{
+				$tagNum = 0;
+			}
 				if( $tagNum <= count($tag_name) && $tagNum > -1){ ?>
 			<a href="<?php echo $tag_link[$tagNum] ?>">
 			<div class="grid-item grid-item--width2 grid-item--height2 secondary">    
@@ -107,7 +113,9 @@
 				</div>
 			</a>
 	
+				
 			<?php 
+			
 			$tagNum ++;
 			}
 			}
