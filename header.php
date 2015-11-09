@@ -12,7 +12,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 
 <head>
-	<title>About Tiffanie</title>
+	<title>Gumption</title>
 <script src="https://use.typekit.net/rff6fnz.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -28,11 +28,51 @@
 
 <body>
 
-	<div class="topper"></div>
+ <?php 
+
+      $args = array(
+        'post_type' => 'contact-image'
+        );
+      $query = new WP_Query( $args );
+
+  ?>
+
+	<div class="topper"><a href="/Tiffanie/wordpress">
+        <?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
+    <a href="/Tiffanie/wordpress"> 
+      <?php the_field( 'logo_color'); ?>
+    <?php endwhile; endif; wp_reset_postdata(); ?>
+  </div>
 
 	<div class="row navigation">
-		<div class="large-4 columns"><a href="/">Blog</a></div>
-		<div class="large-4 columns"><a href="/topics">Topics</a></div>
-		<div class="large-4 columns"><a href="/contact">The Author</a></div>
-	</div>
+<!--  <?php
+
+  $defaults = array(
+    'echo' => false,
+    'container' => false,
+    'theme_location' => 'primary Menu',
+    'nav-class' => 'navigation', 
+  );
+
+{
+    
+
+    $menu = wp_nav_menu($defaults);
+    echo preg_replace(array(
+        '#^<ul[^>]*>#',
+        '#</ul>$#'
+    ), '', $menu);
+
+}
+
+  wp_nav_menu( $defaults );
+
+ ?>  -->
+	<!--	<div class="large-3 columns"><a href="/">Blog</a></div>
+		<div class="large-3 columns"><a href="/wordpress/topics">Topics</a></div>
+		<div class="large-3 columns"><a href="/Tiffanie/wordpress/about">The Author</a></div>
+		<div class="large-3	 columns"><a href="wordpress/contact">Contact</a></div> -->
+	</div> 
+
+
 

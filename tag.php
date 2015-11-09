@@ -16,14 +16,16 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 
+<div class="tags">
 		<?php if ( have_posts() ) : ?>
 			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Tag Archives: %s', 'tiffanie-blog' ), single_tag_title( '', false ) ); ?></h1>
+				<h1 class="archive-title"><?php printf( __( 'Tags: %s', 'tiffanie-blog' ), single_tag_title( '', false ) ); ?></h1>
 
 				<?php if ( tag_description() ) : // Show an optional tag description ?>
 				<div class="archive-meta"><?php echo tag_description(); ?></div>
 				<?php endif; ?>
 			</header><!-- .archive-header -->
+</div>
 
 			<div class="wrapper">
 				<div class="grid">
@@ -53,7 +55,7 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-<?php/* get_sidebar(); */ ?>
+ <?php //get_sidebar(); ?>
 
 
     <!-- ==================

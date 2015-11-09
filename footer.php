@@ -10,13 +10,26 @@
  */
 ?>
 
-	<div class="row bottom">
-		<div class="large-4 columns logo"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/logo-white.png"></div>
-		<div class="large-4 columns fb"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/facebook_logo.png"></div>
-		<div class="large-4 columns tw"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/twitter_logo.png"></div>
-	</div>
+  <?php 
 
-<?php wp_footer(); ?>
+      $args = array(
+        'post_type' => 'contact-image'
+        );
+      $query = new WP_Query( $args );
+
+  ?>
+
+	<div class="row bottom">
+		 <?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
+		<!-- <div class="large-4 columns logo"><?php the_field( 'logo_color'); ?></div> -->
+		<div class="large-12 columns icon">
+		<ul>
+			<li><?php the_field( 'fb_icon'); ?></li>
+			<li><?php the_field( 'twitter_icon'); ?></li>
+			<li><?php the_field( 'mail_icon'); ?></li>
+		</ul>
+		</div>
+  <?php endwhile; endif; wp_reset_postdata(); ?>
 
 </body>
 </html>

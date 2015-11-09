@@ -14,13 +14,24 @@
   </head>
   <body>
 
+ <?php 
+
+      $args = array(
+        'post_type' => 'contact-image'
+        );
+      $query = new WP_Query( $args );
+
+  ?>
+
 <div class="wrapper">
   <div class="grid">
-
-    <a href="/"> 
+  	<?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
+    <a href="/Tiffanie/wordpress"> 
     <div class="grid-item grid-item--width2 grid-item--height2">
-      <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/logo.jpg">
+      <?php the_field( 'logo_color'); ?>
     </div></a>
+
+ 
 	
 	<?php //Gets list of most used tags
 	$tags = get_tags( 'number=50&orderby=count&order=DESC' ); 
@@ -35,38 +46,19 @@
 	$tagNum = 0; // iterates through tag arrays	
 	$state = 0; //variable to help control switching between dynamic and static posts
 	
+	query_posts( 'posts_per_page=5' ); 
+
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 		
 		$rand = (float)rand()/(float)getrandmax();
 	 
 		if($state == 1){ //After first post block do these static blocks
 			$state++; ?>
-			
-				<a href="/contact">  
-					<div class="grid-item grid-item--width2 grid-item--height2 primary">
-					<h1>Contact Me</h1>
-					</div>
-				</a>
-				<a href="#"> 
-					<div class="grid-item primary">
-					<h1>FB</h1>
-					</div>
-				</a>
-
-				<a href="#"> 
-					<div class="grid-item primary">
-					<h1>Twitter</h1>
-					</div>
-				</a>   
-   
-				<a href="/about">  
-					<div class="grid-item grid-item--width2 grid-item--height2 third">
-					<h1>About the Author</h1>
-					</div>
-				</a> 
+		 
+				
   <?php 
   //First tag/post blocks after static blocks
-  if ($rand < 0.3){ //get tag 1/3 of the time			
+  if ($rand < .5){ //get tag 1/2 of the time			
 			
 				if( $tagNum <= count($tag_name) && $tagNum > -1){ ?>
 			<a href="<?php echo $tag_link[$tagNum] ?>">
@@ -82,7 +74,7 @@
   
   
   } if($state == 0 || $state >= 2  ){ //Initial post block before static blocks and all following posts blocks
-			if(state < 2){$state++; }
+			if($state < 2){$state++; }
 		 
 		 	//Gets post's featured image url to use as background image of post	
 			if (has_post_thumbnail($post->ID)){ 
@@ -115,7 +107,59 @@
 	 
 	 endwhile;
     endif;
-?>
+?>  
+
+<a href="/Tiffanie/wordpress/archives/">  
+					<div class="grid-item grid-item--width2 grid-item--height2">
+						<div id="smaller-border">
+							<h1>See More</h1>
+						</div>
+					</div>
+				</a> 
+
+    <?php endwhile; endif; wp_reset_postdata(); ?>
+
+     <?php 
+
+      $args = array(
+        'post_type' => 'about'
+        );
+      $query = new WP_Query( $args );
+
+  ?>
+ 	<?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
+    <a href="/Tiffanie/wordpress/about">  
+					<div class="grid-item grid-item--width2 grid-item--height2 third">
+					<h1><?php the_field( 'title'); ?></h1>
+					</div>
+				</a> 
+
+	  <?php endwhile; endif; wp_reset_postdata(); ?>
+
+<?php 
+
+      $args = array(
+        'post_type' => 'contact-image'
+        );
+      $query = new WP_Query( $args );
+
+  ?>
+
+<?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
+ <a href="https://www.facebook.com/tiffanie.robinson09?fref=ts"> 
+					<div class="grid-item primary">
+					 <?php the_field( 'home_facebook_icon'); ?>
+					</div>
+				</a>
+
+				<a href="https://twitter.com/MrsRobinson1010"> 
+					<div class="grid-item primary">
+					 <?php the_field( 'home_twitter_icon'); ?>
+					</div>
+				</a>
+ <?php endwhile; endif; wp_reset_postdata(); ?>
+
+				
 <!--
     <div class="grid-item grid-item--width2 grid-item--height2 secondary">    
       <h1>#business</h1>
@@ -203,6 +247,7 @@ $('.grid').masonry({
   // options
    itemSelector: '.grid-item',
    columnWidth: 200
+   // isFitWidth: true
 });
 //$('.wrapper').masonry({ isFitWidth: true });
 </script>
