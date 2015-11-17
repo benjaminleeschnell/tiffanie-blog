@@ -2,15 +2,18 @@
 
 /* Sans Serif font is Proxima Nova */
 
-$primary-color: #169bbf;//#00a887;
-$secondary-color: #48c7ea;//#00f3c3;
-$third-color: #106f89;//#00755e;
+$primary-color: #169bbf;//#00a887;(green)//#ff9016;gold//#ff5859pink
+$secondary-color: #48c7ea;//#00f3c3;(green)//#ffb566;gold//#ff8a8a;pink
+$third-color: #106f89;//#00755e;(green)//#ad5a00;gold//#f50000;pink
 
 
 .wrapper {
   margin: 0 auto;
   max-width: 1200px;
   margin-bottom: 60px;
+  .main-logo img {
+    padding: 0;
+  }
 }
 
 .grid-item {
@@ -166,7 +169,7 @@ about.html
     height: 180px;
     width: auto;
     text-align: center;
-    margin: 0 auto;//20px 60px;
+    margin: 10px auto 0 auto;//20px 60px;
   }
 }
 

@@ -16,13 +16,15 @@
 <script src="https://use.typekit.net/rff6fnz.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<meta name="viewport" content="width=device-width">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/foundation.css">
-<link rel="stylesheet" type="text/css" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo esc_url( get_template_directory_uri() ); ?>/style.css">
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/masonry.pkgd.min.js"></script>
+<link rel="icon" type="image/x-icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/img/favicon.png">
+
 <?php wp_head(); ?>
 </head>
 
@@ -37,12 +39,12 @@
 
   ?>
 
-	<div class="topper"><a href="/Tiffanie/wordpress">
+	<div class="topper">
         <?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
-    <a href="/Tiffanie/wordpress"> 
+    <a href="<?php bloginfo('url'); ?>"> 
       <?php the_field( 'logo_color'); ?>
     <?php endwhile; endif; wp_reset_postdata(); ?>
-  </div>
+  </div></a>
 
 	<div class="row navigation">
 <!--  <?php

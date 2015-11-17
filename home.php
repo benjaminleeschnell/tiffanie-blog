@@ -7,9 +7,10 @@
     <script src="https://use.typekit.net/rff6fnz.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?> /css/normalize.css" />
-    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/style.css" />
+    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/masonry.pkgd.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/img/favicon.png">
 	 <?php wp_head(); ?> 
   </head>
   <body>
@@ -26,8 +27,8 @@
 <div class="wrapper">
   <div class="grid">
   	<?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
-    <a href="/Tiffanie/wordpress"> 
-    <div class="grid-item grid-item--width2 grid-item--height2">
+    <a href="#"> 
+    <div class="grid-item grid-item--width2 grid-item--height2 main-logo">
       <?php the_field( 'logo_color'); ?>
     </div></a>
 
@@ -109,7 +110,7 @@
     endif;
 ?>  
 
-<a href="/Tiffanie/wordpress/archives/">  
+<a href="/archives">  
 					<div class="grid-item grid-item--width2 grid-item--height2">
 						<div id="smaller-border">
 							<h1>See More</h1>
@@ -128,7 +129,7 @@
 
   ?>
  	<?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
-    <a href="/Tiffanie/wordpress/about">  
+    <a href="/about">  
 					<div class="grid-item grid-item--width2 grid-item--height2 third">
 					<h1><?php the_field( 'title'); ?></h1>
 					</div>

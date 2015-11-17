@@ -4,6 +4,8 @@
   margin: 0 auto;
   max-width: 1200px;
   margin-bottom: 60px; }
+  .wrapper .main-logo img {
+    padding: 0; }
 
 .grid-item {
   width: 170px;
@@ -113,7 +115,7 @@ about.html
     height: 180px;
     width: auto;
     text-align: center;
-    margin: 0 auto; }
+    margin: 10px auto 0 auto; }
 
 .bottom {
   width: 100% !important;
