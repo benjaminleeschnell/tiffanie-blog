@@ -12,15 +12,22 @@
 <?php } ?>
 		<div class="padded-column medium-4 columns"><?php echo get_the_post_thumbnail(); ?></div>
 		<div class="medium-8 columns">
-		<?php the_content(); ?>
+		<p><?php the_content(); ?></p>
 		</div>
 	
 </div>
 
+<?php
+if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif; ?>
+
 <?php endwhile; ?>
-<div class="row about">
-<?php if (comments_open()) { comments_template(); } ?>
 </div>
+
+<?php //wp_reset_postdata(); ?>
+
+
 </div>
 
 <?php get_footer(); ?>

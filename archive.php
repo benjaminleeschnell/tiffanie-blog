@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 
-
 <?php 
 /*
 
@@ -30,7 +29,7 @@ $the_query = new WP_Query( $args ); ?>
   <!-- pagination here -->
 
   <!-- the loop -->
-  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); 
+  <?php while ( have_posts() ) : the_post(); 
     
 
 //Gets post's featured image url to use as background image of post 

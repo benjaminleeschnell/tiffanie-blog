@@ -101,7 +101,7 @@ about.html
   .about p {
     font-family: "proxima-nova" sans-serif;
     font-size: 1.2em;
-    max-width: 100%; }
+    max-width: 740px; }
   .about .padded-column {
     padding: 40px; }
 
